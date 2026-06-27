@@ -1,0 +1,83 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Hotelbeds
+providerId: hotelbeds
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Travel
+- Hotels
+- Bedbank
+- Accommodation
+- Booking
+- Plans
+description: >-
+  Hotelbeds (HBX Group) does not publish public, self-serve API pricing. APItude
+  is a B2B distribution platform sold through a partner / sales-led model: travel
+  sellers register for free evaluation API keys (rate-limited to a small daily
+  quota), then go through a certification process and sign a commercial agreement
+  before production access. Revenue is earned on the margin between net wholesale
+  rates and the seller's resale price rather than on per-call API fees, so no
+  per-request price list is published.
+notes: >-
+  Pricing, margins, credit terms, and production thresholds are negotiated per
+  partner under contract. Values here are not reconciled against a public rate
+  card because none exists.
+sources:
+- https://developer.hotelbeds.com/documentation/getting-started/
+- https://www.hbxgroup.com/products-and-services/api-suite
+- https://developer.hotelbeds.com/
+plans:
+- id: hotelbeds-evaluation
+  name: Evaluation
+  type: free
+  description: >-
+    Free self-registration providing test API keys against the
+    api.test.hotelbeds.com environment for integration development, limited to a
+    small daily request quota.
+  entries:
+  - label: Evaluation Requests
+    name: evaluation_requests
+    type: usage
+    metric: requests
+    limit: 50
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: Booking API (test)
+  - name: Content API (test)
+  - name: Activities API (test)
+  - name: Transfers API (test)
+  - name: Cache API (test)
+- id: hotelbeds-production
+  name: Production Partner
+  type: enterprise
+  description: >-
+    Certified production access to the full APItude suite under a commercial
+    distribution agreement. Pricing is net wholesale rates with negotiated
+    margins, credit terms, and raised quotas. Contact Hotelbeds / HBX Group sales.
+  entries:
+  - label: Distribution Agreement
+    name: distribution_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Hotel Booking
+  - name: Hotel Content
+  - name: Hotel Cache
+  - name: Activities
+  - name: Transfers
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

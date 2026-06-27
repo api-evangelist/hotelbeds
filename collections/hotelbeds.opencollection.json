@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hotelbeds APItude API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": [
+        {
+          "key": "Api-key",
+          "value": "{{apiKey}}",
+          "in": "header"
+        },
+        {
+          "key": "X-Signature",
+          "value": "{{signature}}",
+          "in": "header"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Booking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Hotel availability search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/hotels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requests room availability and rates for a stay."
+        },
+        {
+          "info": {
+            "name": "Check rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/checkrates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Re-validates price and availability of a rate before booking."
+        },
+        {
+          "info": {
+            "name": "Confirm a booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirms a booking for a validated rate key."
+        },
+        {
+          "info": {
+            "name": "List bookings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings"
+          },
+          "docs": "Retrieves a list of bookings."
+        },
+        {
+          "info": {
+            "name": "Booking detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings/{bookingId}"
+          },
+          "docs": "Retrieves the full detail of a single booking."
+        },
+        {
+          "info": {
+            "name": "Cancel a booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings/{bookingId}"
+          },
+          "docs": "Cancels a booking or simulates the cancellation."
+        },
+        {
+          "info": {
+            "name": "API status check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/status"
+          },
+          "docs": "Returns the operational status of the Booking API."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Hotel content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-content-api/1.0/hotels"
+          },
+          "docs": "Returns static content for hotels."
+        },
+        {
+          "info": {
+            "name": "Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-content-api/1.0/locations/countries"
+          },
+          "docs": "Returns the list of countries."
+        },
+        {
+          "info": {
+            "name": "Destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-content-api/1.0/locations/destinations"
+          },
+          "docs": "Returns the list of destinations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Activities availability search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hotelbeds.com/activity-api/3.0/activities/availability",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns real-time availability and pricing for activities."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transfer availability search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/transfer-api/1.0/availability/{language}/from/{fromType}/{fromCode}/to/{toType}/{toCode}"
+          },
+          "docs": "Returns available transfers between an origin and destination."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cache",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cache availability files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-cache-api/1.0/availabilities"
+          },
+          "docs": "Returns the hourly cache snapshot of all prices and availability."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

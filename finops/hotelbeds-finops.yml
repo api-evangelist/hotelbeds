@@ -1,0 +1,100 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Hotelbeds
+providerId: hotelbeds
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Travel
+- Hotels
+- Bedbank
+- Accommodation
+- Booking
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Hotelbeds (HBX Group) APItude. Unlike usage-metered API
+  platforms, Hotelbeds does not bill per API call. Cost is the net wholesale rate
+  charged when a booking is confirmed; the seller's economics are the margin
+  between that net rate and the resale price, settled under the partner
+  agreement. The FinOps focus is therefore on booking-level cost allocation,
+  cancellation/penalty exposure, and minimizing wasted availability traffic
+  rather than on token or request billing.
+notes: >-
+  No public usage-based rate card exists; net rates, margins, penalties, and
+  settlement terms are contractual and partner-specific. Values are not
+  reconciled.
+sources:
+- https://developer.hotelbeds.com/documentation/getting-started/
+- https://www.hbxgroup.com/products-and-services/api-suite
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Hotelbeds
+serviceCategory: Travel and Distribution
+billingModel:
+  pricingCategory: Wholesale-Net-Rate
+  billingFrequency: Per Booking / Contractual
+  billingCurrency: Multi-currency
+  chargeCategories:
+  - Usage
+  - Credit
+  - Adjustment
+focusColumns:
+  ServiceName: Hotelbeds APItude
+  ServiceCategory: Travel and Distribution
+  ProviderName: Hotelbeds
+  PublisherName: HBX Group
+  InvoiceIssuerName: HBX Group
+  BillingCurrency: Multi-currency
+  ChargeCategory: Usage
+  PricingCategory: Wholesale-Net-Rate
+meters:
+- name: confirmed_bookings
+  description: Bookings confirmed through the Booking API, charged at the net wholesale rate.
+  unit: bookings
+  aggregation: sum
+  dimensions:
+  - account
+  - api
+  - destination
+- name: booking_net_amount
+  description: Net wholesale amount payable per confirmed booking under the partner agreement.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - currency
+- name: cancellation_penalties
+  description: Penalty amounts incurred on cancellations inside the cancellation policy window.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - currency
+- name: availability_requests
+  description: Availability and checkrate calls made against per-key quotas (cost driver as throughput, not direct billing).
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - api
+principles:
+- name: Visibility
+  description: Reconcile confirmed bookings against partner settlement statements; track net amounts by destination and currency.
+- name: Allocation
+  description: Tag API keys per brand/channel and map confirmed bookings to internal cost centers and margins.
+- name: Optimization
+  description: Cache static data via the Content API and use the Cache API for bulk pricing to cut availability traffic; manage cancellation windows to limit penalty exposure.
+- name: Accountability
+  description: Assign owners per channel; review booking volume, margin, and cancellation penalties monthly against targets.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

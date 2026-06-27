@@ -1,0 +1,96 @@
+aid: hotelbeds
+name: Hotelbeds
+review:
+  question: Does Hotelbeds expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-25'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Hotelbeds (HBX Group) APItude is a
+    request/response REST platform with no documented streaming, Server-Sent
+    Events, or WebSocket surface, so there is no event-driven interface to
+    model. The Cache API delivers bulk pricing as periodically generated
+    files retrieved over HTTP GET, not as a stream.
+findings:
+  summary: |
+    Hotelbeds does not publish a documented public WebSocket API. The APItude
+    suite (Hotel Booking, Hotel Content, Activities, Transfers, and Cache) is
+    delivered exclusively over HTTPS REST against api.test.hotelbeds.com (test)
+    and api.hotelbeds.com (production), with an mTLS variant available. There is
+    no realtime, bidirectional, SSE, or WebSocket (ws:// or wss://) endpoint
+    documented for any of the products as of the review date.
+  rebrand:
+    note: |
+      Hotelbeds rebranded its parent group to HBX Group in 2024 (HBX Group
+      listed on the Spanish stock exchange in early 2024). The Hotelbeds brand
+      and developer.hotelbeds.com developer portal remain in active use for the
+      APItude APIs; LinkedIn and corporate materials now appear under HBX Group.
+      This catalog uses the Hotelbeds brand for the developer-facing APIs while
+      noting HBX Group as the parent / publisher.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.test.hotelbeds.com
+      documented: true
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.hotelbeds.com
+      documented: true
+      note: Production environment; access gated behind certification and a commercial agreement.
+    - protocol: mTLS
+      scheme: https
+      baseURL: https://api-mtls.hotelbeds.com
+      documented: true
+      note: Mutual-TLS variant requiring a two-way certificate exchange between client and HBX Group server.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in any APItude product page or knowledge base as of the review date.
+  authentication:
+    scheme: Api-key + X-Signature
+    note: |
+      Every request sends an Api-key header plus an X-Signature header. The
+      X-Signature is a SHA256 hash, in hexadecimal, of the API key, the shared
+      secret, and the current Unix timestamp in seconds. Registration issues a
+      separate key/secret pair per suite (Hotel, Activities, Transfers).
+  endpointsConfirmedRest:
+    - POST https://api.test.hotelbeds.com/hotel-api/1.0/hotels
+    - POST https://api.test.hotelbeds.com/hotel-api/1.0/checkrates
+    - POST https://api.test.hotelbeds.com/hotel-api/1.0/bookings
+    - GET  https://api.test.hotelbeds.com/hotel-api/1.0/bookings/{bookingId}
+    - DELETE https://api.test.hotelbeds.com/hotel-api/1.0/bookings/{bookingId}
+    - GET  https://api.test.hotelbeds.com/hotel-api/1.0/status
+    - GET  https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels
+    - GET  https://api.test.hotelbeds.com/hotel-content-api/1.0/locations/countries
+    - GET  https://api.test.hotelbeds.com/hotel-content-api/1.0/locations/destinations
+    - GET  https://api.test.hotelbeds.com/hotel-content-api/1.0/types/facilities
+    - POST https://api.test.hotelbeds.com/activity-api/3.0/activities/availability
+    - GET  https://api.test.hotelbeds.com/transfer-api/1.0/availability/{language}/from/{fromType}/{fromCode}/to/{toType}/{toCode}
+    - GET  https://api.test.hotelbeds.com/hotel-cache-api/1.0/availabilities
+sources:
+  - url: https://developer.hotelbeds.com/documentation/getting-started/
+    type: Documentation
+    note: Defines Api-key + X-Signature SHA256 auth and the api.test.hotelbeds.com base URL; all REST.
+  - url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+    type: Documentation
+    note: Hotel Booking API operations (hotels, checkrates, bookings) are HTTPS REST; no WebSocket.
+  - url: https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/
+    type: Documentation
+    note: Content API served over GET endpoints under /hotel-content-api/1.0/ (locations/ and types/).
+  - url: https://developer.hotelbeds.com/documentation/hotels/cache-api/
+    type: Documentation
+    note: Cache API delivers zipped CSV files over HTTP GET, hourly; not a stream or WebSocket.
+  - url: https://www.hbxgroup.com/products-and-services/api-suite
+    type: Website
+    note: HBX Group is the parent following the 2024 rebrand; APItude suite marketed here.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or event-driven protocol surface exists, so no AsyncAPI
+    document was authored. The apis.yml catalogs the five REST APItude products
+    with Api-key + X-Signature authentication and the documented base URLs.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

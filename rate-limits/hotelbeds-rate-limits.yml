@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Hotelbeds
+providerId: hotelbeds
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Travel
+- Hotels
+- Bedbank
+- Accommodation
+- Booking
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Hotelbeds (HBX Group) APItude enforces per-API-key quotas that differ sharply
+  between the evaluation and production environments. Evaluation keys are capped
+  at a small number of requests per day; exceeding the quota returns HTTP 403.
+  Production limits (queries per second / per day, plus availability and booking
+  throughput) are raised during certification and set per partner under contract.
+  Specific production values are not reconciled in this artifact.
+notes: >-
+  Verify exact per-key quotas, QPS ceilings, and certification thresholds with
+  Hotelbeds during onboarding; they vary by partner agreement and product suite.
+sources:
+- https://developer.hotelbeds.com/documentation/getting-started/
+- https://developer.hotelbeds.com/documentation/hotels/knowledge-base/mutual-authentication/
+- https://developer.hotelbeds.com/documentation/activities/knowledge-base/errors/
+responseCodes:
+  throttled: 403
+limits:
+- name: Evaluation Requests Per Day
+  scope: api-key
+  metric: requests
+  limit: 50
+  notes: Evaluation keys are limited to roughly 50 requests per day; exceeding the quota returns HTTP 403.
+- name: Production Queries Per Second (QPS)
+  scope: api-key
+  metric: requests
+  limit: see partner agreement
+  notes: Raised through certification; negotiated per partner and product suite.
+- name: Production Requests Per Day
+  scope: api-key
+  metric: requests
+  limit: see partner agreement
+  notes: Daily ceiling set per commercial agreement.
+- name: Availability Throughput
+  scope: api-key
+  metric: requests
+  limit: see partner agreement
+  notes: Availability search throughput is governed separately from booking calls.
+policies:
+- name: Certification Gating
+  description: Quotas increase only after the integration passes Hotelbeds certification and a commercial agreement is in place.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and avoid hammering availability endpoints; cache static content via the Content API.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

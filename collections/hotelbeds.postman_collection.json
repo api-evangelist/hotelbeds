@@ -1,0 +1,379 @@
+{
+  "item": [
+    {
+      "id": "f1a2b3c4-0001-4a01-9a01-000000000001",
+      "name": "Booking",
+      "description": {
+        "content": "Hotel availability, rate checking, and booking lifecycle.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a2b3c4-0001-4a01-9a01-000000000011",
+          "name": "Hotel availability search",
+          "request": {
+            "name": "Hotel availability search",
+            "description": {},
+            "url": {
+              "path": ["hotel-api", "1.0", "hotels"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0001-4a01-9a01-000000000012",
+          "name": "Check rates",
+          "request": {
+            "name": "Check rates",
+            "description": {},
+            "url": {
+              "path": ["hotel-api", "1.0", "checkrates"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0001-4a01-9a01-000000000013",
+          "name": "Confirm a booking",
+          "request": {
+            "name": "Confirm a booking",
+            "description": {},
+            "url": {
+              "path": ["hotel-api", "1.0", "bookings"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0001-4a01-9a01-000000000014",
+          "name": "List bookings",
+          "request": {
+            "name": "List bookings",
+            "description": {},
+            "url": {
+              "path": ["hotel-api", "1.0", "bookings"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0001-4a01-9a01-000000000015",
+          "name": "Booking detail",
+          "request": {
+            "name": "Booking detail",
+            "description": {},
+            "url": {
+              "path": ["hotel-api", "1.0", "bookings", ":bookingId"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [{ "key": "bookingId", "value": "" }]
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0001-4a01-9a01-000000000016",
+          "name": "Cancel a booking",
+          "request": {
+            "name": "Cancel a booking",
+            "description": {},
+            "url": {
+              "path": ["hotel-api", "1.0", "bookings", ":bookingId"],
+              "host": ["{{baseUrl}}"],
+              "query": [{ "key": "cancellationFlag", "value": "CANCELLATION" }],
+              "variable": [{ "key": "bookingId", "value": "" }]
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0001-4a01-9a01-000000000017",
+          "name": "API status check",
+          "request": {
+            "name": "API status check",
+            "description": {},
+            "url": {
+              "path": ["hotel-api", "1.0", "status"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "f1a2b3c4-0002-4a01-9a01-000000000002",
+      "name": "Content",
+      "description": {
+        "content": "Static hotel, destination, and reference content.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a2b3c4-0002-4a01-9a01-000000000021",
+          "name": "Hotel content",
+          "request": {
+            "name": "Hotel content",
+            "description": {},
+            "url": {
+              "path": ["hotel-content-api", "1.0", "hotels"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "fields", "value": "all" },
+                { "key": "language", "value": "ENG" },
+                { "key": "from", "value": "1" },
+                { "key": "to", "value": "100" }
+              ],
+              "variable": []
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0002-4a01-9a01-000000000022",
+          "name": "Countries",
+          "request": {
+            "name": "Countries",
+            "description": {},
+            "url": {
+              "path": ["hotel-content-api", "1.0", "locations", "countries"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "fields", "value": "all" },
+                { "key": "language", "value": "ENG" }
+              ],
+              "variable": []
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "f1a2b3c4-0002-4a01-9a01-000000000023",
+          "name": "Destinations",
+          "request": {
+            "name": "Destinations",
+            "description": {},
+            "url": {
+              "path": ["hotel-content-api", "1.0", "locations", "destinations"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                { "key": "fields", "value": "all" },
+                { "key": "language", "value": "ENG" }
+              ],
+              "variable": []
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "f1a2b3c4-0003-4a01-9a01-000000000003",
+      "name": "Activities",
+      "description": {
+        "content": "Tours and activities availability and booking.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a2b3c4-0003-4a01-9a01-000000000031",
+          "name": "Activities availability search",
+          "request": {
+            "name": "Activities availability search",
+            "description": {},
+            "url": {
+              "path": ["activity-api", "3.0", "activities", "availability"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "f1a2b3c4-0004-4a01-9a01-000000000004",
+      "name": "Transfers",
+      "description": {
+        "content": "Ground transportation availability and booking.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a2b3c4-0004-4a01-9a01-000000000041",
+          "name": "Transfer availability search",
+          "request": {
+            "name": "Transfer availability search",
+            "description": {},
+            "url": {
+              "path": ["transfer-api", "1.0", "availability", ":language", "from", ":fromType", ":fromCode", "to", ":toType", ":toCode"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                { "key": "language", "value": "en" },
+                { "key": "fromType", "value": "IATA" },
+                { "key": "fromCode", "value": "" },
+                { "key": "toType", "value": "ATLAS" },
+                { "key": "toCode", "value": "" }
+              ]
+            },
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "f1a2b3c4-0005-4a01-9a01-000000000005",
+      "name": "Cache",
+      "description": {
+        "content": "Bulk cached price and availability snapshots.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a2b3c4-0005-4a01-9a01-000000000051",
+          "name": "Cache availability files",
+          "request": {
+            "name": "Cache availability files",
+            "description": {},
+            "url": {
+              "path": ["hotel-cache-api", "1.0", "availabilities"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Accept", "value": "application/zip" }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hotelbeds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Api-key" },
+      { "key": "value", "value": "{{apiKey}}" },
+      { "key": "in", "value": "header" }
+    ]
+  },
+  "info": {
+    "_postman_id": "f1a2b3c4-0000-4a01-9a01-000000000000",
+    "name": "Hotelbeds APItude API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Hotelbeds (HBX Group) APItude API suite - Booking, Content, Activities, Transfers, and Cache. Authenticate with an Api-key header plus an X-Signature header (SHA256 hex of apiKey + secret + Unix timestamp in seconds).\n\nContact Support:\n Name: Hotelbeds Developer Support\n URL: https://developer.hotelbeds.com/support/",
+      "type": "text/plain"
+    }
+  }
+}
