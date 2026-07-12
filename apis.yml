@@ -150,6 +150,10 @@ apis:
     and cancellations - pushed to integrator endpoints so partner systems stay in
     sync without polling. Availability varies by partner agreement.
 common:
+- type: DomainSecurity
+  url: security/hotelbeds-domain-security.yml
+- type: Authentication
+  url: authentication/hotelbeds-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/hbxgroup
 - type: Website
