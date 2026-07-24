@@ -1,0 +1,110 @@
+openapi: 3.0.1
+info:
+  title: Hotelbeds APItude Activities API
+  description: Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.
+  termsOfService: https://www.hotelbeds.com/terms-conditions/
+  contact:
+    name: Hotelbeds Developer Support
+    url: https://developer.hotelbeds.com/support/
+  version: '1.0'
+servers:
+- url: https://api.hotelbeds.com
+  description: Production environment
+- url: https://api.test.hotelbeds.com
+  description: Test / evaluation environment
+security:
+- ApiKeyAuth: []
+  SignatureAuth: []
+tags:
+- name: Activities
+paths:
+  /activity-api/3.0/activities/availability:
+    post:
+      operationId: getActivityAvailability
+      tags:
+      - Activities
+      summary: Activities availability search
+      description: Returns real-time availability and pricing for tours and activities.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailabilityRequest'
+      responses:
+        '200':
+          description: Activity availability results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+components:
+  schemas:
+    AvailabilityResponse:
+      type: object
+      properties:
+        auditData:
+          type: object
+        hotels:
+          type: object
+          properties:
+            total:
+              type: integer
+            hotels:
+              type: array
+              items:
+                $ref: '#/components/schemas/Hotel'
+    AvailabilityRequest:
+      type: object
+      properties:
+        stay:
+          type: object
+          properties:
+            checkIn:
+              type: string
+              format: date
+            checkOut:
+              type: string
+              format: date
+        occupancies:
+          type: array
+          items:
+            type: object
+            properties:
+              rooms:
+                type: integer
+              adults:
+                type: integer
+              children:
+                type: integer
+        destination:
+          type: object
+          properties:
+            code:
+              type: string
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Api-key
+      description: Your APItude API key, issued per API suite (Hotel, Activities, Transfers).
+    SignatureAuth:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: SHA256 hash, in hexadecimal, of the concatenation of the API key, the shared secret, and the current Unix timestamp in seconds.

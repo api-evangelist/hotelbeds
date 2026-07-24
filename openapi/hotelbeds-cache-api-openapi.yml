@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: Hotelbeds APItude Activities Cache API
+  description: Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.
+  termsOfService: https://www.hotelbeds.com/terms-conditions/
+  contact:
+    name: Hotelbeds Developer Support
+    url: https://developer.hotelbeds.com/support/
+  version: '1.0'
+servers:
+- url: https://api.hotelbeds.com
+  description: Production environment
+- url: https://api.test.hotelbeds.com
+  description: Test / evaluation environment
+security:
+- ApiKeyAuth: []
+  SignatureAuth: []
+tags:
+- name: Cache
+paths:
+  /hotel-cache-api/1.0/availabilities:
+    get:
+      operationId: getCacheFiles
+      tags:
+      - Cache
+      summary: Cache availability files
+      description: Returns the hourly cache snapshot of all prices and availability as a CSV file compressed in .zip.
+      responses:
+        '200':
+          description: A zipped CSV cache file.
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Api-key
+      description: Your APItude API key, issued per API suite (Hotel, Activities, Transfers).
+    SignatureAuth:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: SHA256 hash, in hexadecimal, of the concatenation of the API key, the shared secret, and the current Unix timestamp in seconds.

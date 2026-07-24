@@ -1,0 +1,102 @@
+openapi: 3.0.1
+info:
+  title: Hotelbeds APItude Activities Transfers API
+  description: Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.
+  termsOfService: https://www.hotelbeds.com/terms-conditions/
+  contact:
+    name: Hotelbeds Developer Support
+    url: https://developer.hotelbeds.com/support/
+  version: '1.0'
+servers:
+- url: https://api.hotelbeds.com
+  description: Production environment
+- url: https://api.test.hotelbeds.com
+  description: Test / evaluation environment
+security:
+- ApiKeyAuth: []
+  SignatureAuth: []
+tags:
+- name: Transfers
+paths:
+  /transfer-api/1.0/availability/{language}/from/{fromType}/{fromCode}/to/{toType}/{toCode}:
+    get:
+      operationId: getTransferAvailability
+      tags:
+      - Transfers
+      summary: Transfer availability search
+      description: Returns available transfers between an origin and destination identified by IATA code, GPS coordinates, or Hotelbeds custom codes.
+      parameters:
+      - name: language
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fromType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fromCode
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: toType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: toCode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transfer availability results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+components:
+  schemas:
+    AvailabilityResponse:
+      type: object
+      properties:
+        auditData:
+          type: object
+        hotels:
+          type: object
+          properties:
+            total:
+              type: integer
+            hotels:
+              type: array
+              items:
+                $ref: '#/components/schemas/Hotel'
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Api-key
+      description: Your APItude API key, issued per API suite (Hotel, Activities, Transfers).
+    SignatureAuth:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: SHA256 hash, in hexadecimal, of the concatenation of the API key, the shared secret, and the current Unix timestamp in seconds.
