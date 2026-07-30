@@ -7,7 +7,20 @@ description: Hotelbeds (now part of HBX Group) is a global B2B travel bedbank an
   price, and book hotels, activities, and transfers, and pull static content and
   cached availability, authenticated with an Api-key plus a SHA256 X-Signature of
   the API key, secret, and request timestamp.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hotelbeds.png
 tags:
 - Travel
 - Hotels
@@ -18,137 +31,166 @@ created: '2026-06-25'
 modified: '2026-06-25'
 specificationVersion: '0.19'
 apis:
-- aid: hotelbeds:hotel-booking-api
-  name: Hotel Booking API
-  tags:
-  - Hotels
-  - Booking
-  - Availability
-  - Rates
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: hotelbeds:hotelbeds-activities-api
+  name: Hotelbeds Activities API
+  description: The Activities API from Hotelbeds — 1 operation(s) for activities.
   humanURL: https://developer.hotelbeds.com/documentation/hotels/booking-api/
   baseURL: https://api.hotelbeds.com/hotel-api/1.0
-  properties:
-  - url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
-    type: Documentation
-  - url: https://developer.hotelbeds.com/documentation/hotels/booking-api/workflow/
-    type: APIReference
-  - url: openapi/hotelbeds-openapi.yml
-    type: OpenAPI
-  - url: collections/hotelbeds.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hotelbeds.opencollection.json
-    type: OpenCollection
-  description: Hotel availability search, real-time rate checking (checkrates), and
-    the full booking lifecycle - confirm, list, detail, modify, and cancel
-    reservations - across the Hotelbeds accommodation bedbank.
-- aid: hotelbeds:hotel-content-api
-  name: Hotel Content API
-  tags:
-  - Hotels
-  - Content
-  - Static Data
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.hotelbeds.com/documentation/hotels/content-api/
-  baseURL: https://api.hotelbeds.com/hotel-content-api/1.0
-  properties:
-  - url: https://developer.hotelbeds.com/documentation/hotels/content-api/
-    type: Documentation
-  - url: https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/
-    type: APIReference
-  - url: openapi/hotelbeds-openapi.yml
-    type: OpenAPI
-  - url: collections/hotelbeds.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hotelbeds.opencollection.json
-    type: OpenCollection
-  description: All static information needed to operate the Booking API - hotels,
-    countries, destinations, accommodations, boards, categories, chains, facilities,
-    segments, and currencies - served over fast REST GET endpoints.
-- aid: hotelbeds:cache-rates-api
-  name: Cache Rates API
-  tags:
-  - Hotels
-  - Cache
-  - Rates
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.hotelbeds.com/documentation/hotels/cache-api/
-  baseURL: https://api.hotelbeds.com/hotel-cache-api/1.0
-  properties:
-  - url: https://developer.hotelbeds.com/documentation/hotels/cache-api/
-    type: Documentation
-  - url: openapi/hotelbeds-openapi.yml
-    type: OpenAPI
-  - url: collections/hotelbeds.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hotelbeds.opencollection.json
-    type: OpenCollection
-  description: Bulk cached price and availability snapshots for high-volume search,
-    letting integrators index inventory locally and reduce live availability calls
-    before rechecking up-to-date rates through the Booking API.
-- aid: hotelbeds:activities-api
-  name: Activities API
   tags:
   - Activities
-  - Tours
-  - Booking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.hotelbeds.com/documentation/activities/
-  baseURL: https://api.hotelbeds.com/activity-api/3.0
   properties:
-  - url: https://developer.hotelbeds.com/documentation/activities/
-    type: Documentation
-  - url: https://developer.hotelbeds.com/documentation/activities/booking-api/overview/
-    type: APIReference
-  - url: openapi/hotelbeds-openapi.yml
-    type: OpenAPI
-  - url: collections/hotelbeds.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hotelbeds.opencollection.json
-    type: OpenCollection
-  description: Real-time availability, rate checking, and booking management for tours
-    and activities, plus activity content and portfolio data such as countries and
-    destinations.
-- aid: hotelbeds:transfers-api
-  name: Transfers API
-  tags:
-  - Transfers
-  - Ground Transport
-  - Booking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.hotelbeds.com/documentation/transfers/
-  baseURL: https://api.hotelbeds.com/transfer-api/1.0
-  properties:
-  - url: https://developer.hotelbeds.com/documentation/transfers/
-    type: Documentation
-  - url: https://developer.hotelbeds.com/documentation/transfers/transfer-api/
-    type: APIReference
-  - url: openapi/hotelbeds-openapi.yml
-    type: OpenAPI
-  - url: collections/hotelbeds.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hotelbeds.opencollection.json
-    type: OpenCollection
-  description: Ground transportation availability and booking by IATA code, GPS
-    coordinates, or Hotelbeds custom codes, covering airport, hotel, and
-    point-to-point transfers, plus transfer content such as routes and vehicle types.
-- aid: hotelbeds:webhooks
-  name: Webhooks
-  tags:
-  - Webhooks
-  - Events
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  - type: OpenAPI
+    url: openapi/hotelbeds-activities-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/workflow/
+  - type: PostmanCollection
+    url: collections/hotelbeds.postman_collection.json
+  - type: OpenCollection
+    url: collections/hotelbeds.opencollection.json
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/cache-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/activities/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/activities/booking-api/overview/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/transfers/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/transfers/transfer-api/
+- aid: hotelbeds:hotelbeds-booking-api
+  name: Hotelbeds Booking API
+  description: The Booking API from Hotelbeds — 5 operation(s) for booking.
   humanURL: https://developer.hotelbeds.com/documentation/hotels/booking-api/
   baseURL: https://api.hotelbeds.com/hotel-api/1.0
+  tags:
+  - Booking
   properties:
-  - url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
-    type: Documentation
-  - url: openapi/hotelbeds-openapi.yml
-    type: OpenAPI
-  description: Outbound booking event notifications - confirmations, modifications,
-    and cancellations - pushed to integrator endpoints so partner systems stay in
-    sync without polling. Availability varies by partner agreement.
+  - type: OpenAPI
+    url: openapi/hotelbeds-booking-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/workflow/
+  - type: PostmanCollection
+    url: collections/hotelbeds.postman_collection.json
+  - type: OpenCollection
+    url: collections/hotelbeds.opencollection.json
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/cache-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/activities/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/activities/booking-api/overview/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/transfers/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/transfers/transfer-api/
+- aid: hotelbeds:hotelbeds-cache-api
+  name: Hotelbeds Cache API
+  description: The Cache API from Hotelbeds — 1 operation(s) for cache.
+  humanURL: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  baseURL: https://api.hotelbeds.com/hotel-api/1.0
+  tags:
+  - Cache
+  properties:
+  - type: OpenAPI
+    url: openapi/hotelbeds-cache-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/workflow/
+  - type: PostmanCollection
+    url: collections/hotelbeds.postman_collection.json
+  - type: OpenCollection
+    url: collections/hotelbeds.opencollection.json
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/cache-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/activities/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/activities/booking-api/overview/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/transfers/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/transfers/transfer-api/
+- aid: hotelbeds:hotelbeds-content-api
+  name: Hotelbeds Content API
+  description: The Content API from Hotelbeds — 3 operation(s) for content.
+  humanURL: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  baseURL: https://api.hotelbeds.com/hotel-api/1.0
+  tags:
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/hotelbeds-content-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/workflow/
+  - type: PostmanCollection
+    url: collections/hotelbeds.postman_collection.json
+  - type: OpenCollection
+    url: collections/hotelbeds.opencollection.json
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/cache-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/activities/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/activities/booking-api/overview/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/transfers/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/transfers/transfer-api/
+- aid: hotelbeds:hotelbeds-transfers-api
+  name: Hotelbeds Transfers API
+  description: The Transfers API from Hotelbeds — 1 operation(s) for transfers.
+  humanURL: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  baseURL: https://api.hotelbeds.com/hotel-api/1.0
+  tags:
+  - Transfers
+  properties:
+  - type: OpenAPI
+    url: openapi/hotelbeds-transfers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/booking-api/workflow/
+  - type: PostmanCollection
+    url: collections/hotelbeds.postman_collection.json
+  - type: OpenCollection
+    url: collections/hotelbeds.opencollection.json
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/hotels/cache-api/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/activities/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/activities/booking-api/overview/
+  - type: Documentation
+    url: https://developer.hotelbeds.com/documentation/transfers/
+  - type: APIReference
+    url: https://developer.hotelbeds.com/documentation/transfers/transfer-api/
 common:
 - type: AgenticAccess
   url: agentic-access/hotelbeds-agentic-access.yml
