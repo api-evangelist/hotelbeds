@@ -1,0 +1,465 @@
+openapi: 3.0.1
+info:
+  title: Hotelbeds APItude API
+  description: >-
+    Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel
+    Booking API (availability, checkrates, bookings), the Hotel Content API (static
+    hotel and destination data), the Activities API, the Transfers API, and the
+    Hotel Cache API. All requests authenticate with an Api-key header plus an
+    X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and
+    the current Unix timestamp in seconds.
+  termsOfService: https://www.hotelbeds.com/terms-conditions/
+  contact:
+    name: Hotelbeds Developer Support
+    url: https://developer.hotelbeds.com/support/
+  version: '1.0'
+servers:
+  - url: https://api.hotelbeds.com
+    description: Production environment
+  - url: https://api.test.hotelbeds.com
+    description: Test / evaluation environment
+security:
+  - ApiKeyAuth: []
+    SignatureAuth: []
+paths:
+  /hotel-api/1.0/status:
+    get:
+      operationId: getStatus
+      tags:
+        - Booking
+      summary: API status check
+      description: Returns the operational status of the Hotel Booking API.
+      responses:
+        '200':
+          description: API is operational.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+  /hotel-api/1.0/hotels:
+    post:
+      operationId: getAvailability
+      tags:
+        - Booking
+      summary: Hotel availability search
+      description: >-
+        Requests room availability and rates for a stay, filtered by destination,
+        hotel codes, geolocation, dates, and occupancies.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailabilityRequest'
+      responses:
+        '200':
+          description: Availability results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+  /hotel-api/1.0/checkrates:
+    post:
+      operationId: checkRates
+      tags:
+        - Booking
+      summary: Check rates
+      description: >-
+        Re-validates the price and availability of one or more rates returned by
+        an availability search before confirming a booking.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckRateRequest'
+      responses:
+        '200':
+          description: Confirmed rate details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+  /hotel-api/1.0/bookings:
+    get:
+      operationId: listBookings
+      tags:
+        - Booking
+      summary: List bookings
+      description: Retrieves a list of bookings filtered by client reference or dates.
+      parameters:
+        - name: start
+          in: query
+          schema:
+            type: integer
+        - name: end
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of bookings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+    post:
+      operationId: confirmBooking
+      tags:
+        - Booking
+      summary: Confirm a booking
+      description: Confirms a booking for a rate key validated through checkrates.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingRequest'
+      responses:
+        '200':
+          description: The confirmed booking.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+  /hotel-api/1.0/bookings/{bookingId}:
+    get:
+      operationId: getBookingDetail
+      tags:
+        - Booking
+      summary: Booking detail
+      description: Retrieves the full detail of a single booking by reference.
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested booking.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+    delete:
+      operationId: cancelBooking
+      tags:
+        - Booking
+      summary: Cancel a booking
+      description: >-
+        Cancels a booking, or simulates the cancellation when cancellationFlag is
+        SIMULATION.
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: cancellationFlag
+          in: query
+          schema:
+            type: string
+            enum:
+              - CANCELLATION
+              - SIMULATION
+      responses:
+        '200':
+          description: The cancelled booking.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+  /hotel-content-api/1.0/hotels:
+    get:
+      operationId: getHotelContent
+      tags:
+        - Content
+      summary: Hotel content
+      description: Returns static content for hotels - descriptions, addresses, images, and facilities.
+      parameters:
+        - name: fields
+          in: query
+          schema:
+            type: string
+        - name: language
+          in: query
+          schema:
+            type: string
+        - name: from
+          in: query
+          schema:
+            type: integer
+        - name: to
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Hotel content results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelContentResponse'
+  /hotel-content-api/1.0/locations/countries:
+    get:
+      operationId: getCountries
+      tags:
+        - Content
+      summary: Countries
+      description: Returns the list of countries available in the content database.
+      parameters:
+        - name: fields
+          in: query
+          schema:
+            type: string
+        - name: language
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Country list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelContentResponse'
+  /hotel-content-api/1.0/locations/destinations:
+    get:
+      operationId: getDestinations
+      tags:
+        - Content
+      summary: Destinations
+      description: Returns the list of destinations available in the content database.
+      parameters:
+        - name: fields
+          in: query
+          schema:
+            type: string
+        - name: language
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Destination list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelContentResponse'
+  /activity-api/3.0/activities/availability:
+    post:
+      operationId: getActivityAvailability
+      tags:
+        - Activities
+      summary: Activities availability search
+      description: Returns real-time availability and pricing for tours and activities.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailabilityRequest'
+      responses:
+        '200':
+          description: Activity availability results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+  /transfer-api/1.0/availability/{language}/from/{fromType}/{fromCode}/to/{toType}/{toCode}:
+    get:
+      operationId: getTransferAvailability
+      tags:
+        - Transfers
+      summary: Transfer availability search
+      description: >-
+        Returns available transfers between an origin and destination identified
+        by IATA code, GPS coordinates, or Hotelbeds custom codes.
+      parameters:
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: fromType
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: fromCode
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: toType
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: toCode
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Transfer availability results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+  /hotel-cache-api/1.0/availabilities:
+    get:
+      operationId: getCacheFiles
+      tags:
+        - Cache
+      summary: Cache availability files
+      description: >-
+        Returns the hourly cache snapshot of all prices and availability as a CSV
+        file compressed in .zip.
+      responses:
+        '200':
+          description: A zipped CSV cache file.
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Api-key
+      description: Your APItude API key, issued per API suite (Hotel, Activities, Transfers).
+    SignatureAuth:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: >-
+        SHA256 hash, in hexadecimal, of the concatenation of the API key, the
+        shared secret, and the current Unix timestamp in seconds.
+  schemas:
+    Status:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+    AvailabilityRequest:
+      type: object
+      properties:
+        stay:
+          type: object
+          properties:
+            checkIn:
+              type: string
+              format: date
+            checkOut:
+              type: string
+              format: date
+        occupancies:
+          type: array
+          items:
+            type: object
+            properties:
+              rooms:
+                type: integer
+              adults:
+                type: integer
+              children:
+                type: integer
+        destination:
+          type: object
+          properties:
+            code:
+              type: string
+    AvailabilityResponse:
+      type: object
+      properties:
+        auditData:
+          type: object
+        hotels:
+          type: object
+          properties:
+            total:
+              type: integer
+            hotels:
+              type: array
+              items:
+                $ref: '#/components/schemas/Hotel'
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
+    CheckRateRequest:
+      type: object
+      properties:
+        rooms:
+          type: array
+          items:
+            type: object
+            properties:
+              rateKey:
+                type: string
+    BookingRequest:
+      type: object
+      properties:
+        holder:
+          type: object
+          properties:
+            name:
+              type: string
+            surname:
+              type: string
+        rooms:
+          type: array
+          items:
+            type: object
+            properties:
+              rateKey:
+                type: string
+              paxes:
+                type: array
+                items:
+                  type: object
+        clientReference:
+          type: string
+    Booking:
+      type: object
+      properties:
+        reference:
+          type: string
+        clientReference:
+          type: string
+        status:
+          type: string
+        totalNet:
+          type: string
+        currency:
+          type: string
+    HotelContentResponse:
+      type: object
+      properties:
+        from:
+          type: integer
+        to:
+          type: integer
+        total:
+          type: integer
+        hotels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hotel'

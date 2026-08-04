@@ -1,0 +1,22 @@
+{
+  "provider": "hotelbeds",
+  "sources": [
+    "hotelbeds-activities-api-openapi.yml",
+    "hotelbeds-booking-api-openapi.yml",
+    "hotelbeds-cache-api-openapi.yml",
+    "hotelbeds-content-api-openapi.yml",
+    "hotelbeds-transfers-api-openapi.yml"
+  ],
+  "outputs": [
+    "hotelbeds-activities-api-openapi.yml",
+    "hotelbeds-booking-api-openapi.yml",
+    "hotelbeds-cache-api-openapi.yml",
+    "hotelbeds-content-api-openapi.yml",
+    "hotelbeds-transfers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
