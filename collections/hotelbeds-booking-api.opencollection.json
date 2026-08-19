@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hotelbeds APItude Activities Booking API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Api-key",
+      "value": "{{Api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Booking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API status check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/status"
+          },
+          "docs": "Returns the operational status of the Hotel Booking API."
+        },
+        {
+          "info": {
+            "name": "Hotel availability search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/hotels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requests room availability and rates for a stay, filtered by destination, hotel codes, geolocation, dates, and occupancies."
+        },
+        {
+          "info": {
+            "name": "Check rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/checkrates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Re-validates the price and availability of one or more rates returned by an availability search before confirming a booking."
+        },
+        {
+          "info": {
+            "name": "List bookings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of bookings filtered by client reference or dates."
+        },
+        {
+          "info": {
+            "name": "Confirm a booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirms a booking for a rate key validated through checkrates."
+        },
+        {
+          "info": {
+            "name": "Booking detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings/:bookingId",
+            "params": [
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the full detail of a single booking by reference."
+        },
+        {
+          "info": {
+            "name": "Cancel a booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hotelbeds.com/hotel-api/1.0/bookings/:bookingId",
+            "params": [
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cancellationFlag",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Cancels a booking, or simulates the cancellation when cancellationFlag is SIMULATION."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

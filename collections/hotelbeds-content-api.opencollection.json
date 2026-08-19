@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hotelbeds APItude Activities Content API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Api-key",
+      "value": "{{Api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Hotel content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-content-api/1.0/hotels",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns static content for hotels - descriptions, addresses, images, and facilities."
+        },
+        {
+          "info": {
+            "name": "Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-content-api/1.0/locations/countries",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the list of countries available in the content database."
+        },
+        {
+          "info": {
+            "name": "Destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hotelbeds.com/hotel-content-api/1.0/locations/destinations",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the list of destinations available in the content database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

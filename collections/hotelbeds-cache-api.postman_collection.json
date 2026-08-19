@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "a31dbc4a-c21a-46b0-a062-0e899212fc28",
+      "name": "Cache",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48f2791e-8b25-488c-aba8-bedba29c3eec",
+          "name": "Cache availability files",
+          "request": {
+            "name": "Cache availability files",
+            "description": {
+              "content": "Returns the hourly cache snapshot of all prices and availability as a CSV file compressed in .zip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-cache-api",
+                "1.0",
+                "availabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94e08d5e-2e36-4d13-8904-c04ce29ecc8a",
+              "name": "A zipped CSV cache file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-cache-api",
+                    "1.0",
+                    "availabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hotelbeds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b72a95b-0cec-44a3-9302-7b713d70a36c",
+    "name": "Hotelbeds APItude Activities Cache API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.\n\nContact Support:\n Name: Hotelbeds Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

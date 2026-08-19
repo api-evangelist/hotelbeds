@@ -1,0 +1,753 @@
+{
+  "item": [
+    {
+      "id": "aacba4be-a499-4e77-bd8d-53b299a5d952",
+      "name": "Booking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb7e17f5-ddaf-43ac-a48c-35996a46f12e",
+          "name": "API status check",
+          "request": {
+            "name": "API status check",
+            "description": {
+              "content": "Returns the operational status of the Hotel Booking API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-api",
+                "1.0",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7eeca3a-0557-4692-86f6-1e9fc288e8a1",
+              "name": "API is operational.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-api",
+                    "1.0",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14075ead-d857-4c8a-90b4-399f438feebd",
+          "name": "Hotel availability search",
+          "request": {
+            "name": "Hotel availability search",
+            "description": {
+              "content": "Requests room availability and rates for a stay, filtered by destination, hotel codes, geolocation, dates, and occupancies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-api",
+                "1.0",
+                "hotels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stay\": {\n    \"checkIn\": \"<date>\",\n    \"checkOut\": \"<date>\"\n  },\n  \"occupancies\": [\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    },\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    }\n  ],\n  \"destination\": {\n    \"code\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a4bd21e-1aa6-4c76-aaf6-cc665e863af6",
+              "name": "Availability results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-api",
+                    "1.0",
+                    "hotels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stay\": {\n    \"checkIn\": \"<date>\",\n    \"checkOut\": \"<date>\"\n  },\n  \"occupancies\": [\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    },\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    }\n  ],\n  \"destination\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditData\": {},\n  \"hotels\": {\n    \"total\": 3555,\n    \"hotels\": [\n      {\n        \"code\": 6538,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      },\n      {\n        \"code\": 3551,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db7a3bbb-f615-43b7-9099-7a35c0b26e38",
+          "name": "Check rates",
+          "request": {
+            "name": "Check rates",
+            "description": {
+              "content": "Re-validates the price and availability of one or more rates returned by an availability search before confirming a booking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-api",
+                "1.0",
+                "checkrates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rooms\": [\n    {\n      \"rateKey\": \"<string>\"\n    },\n    {\n      \"rateKey\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35687f79-a71c-42d2-a68b-c362bfb20c38",
+              "name": "Confirmed rate details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-api",
+                    "1.0",
+                    "checkrates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rooms\": [\n    {\n      \"rateKey\": \"<string>\"\n    },\n    {\n      \"rateKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditData\": {},\n  \"hotels\": {\n    \"total\": 335,\n    \"hotels\": [\n      {\n        \"code\": 5126,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      },\n      {\n        \"code\": 139,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96b60c09-8fdf-41ed-ba4e-91de144a4362",
+          "name": "List bookings",
+          "request": {
+            "name": "List bookings",
+            "description": {
+              "content": "Retrieves a list of bookings filtered by client reference or dates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-api",
+                "1.0",
+                "bookings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d08ed45-9f8c-400d-80ad-bbb14e2c4c3d",
+              "name": "A list of bookings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-api",
+                    "1.0",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reference\": \"string\",\n  \"clientReference\": \"string\",\n  \"status\": \"string\",\n  \"totalNet\": \"string\",\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e07ca655-0752-4c0e-8d88-016ba1a4166c",
+          "name": "Confirm a booking",
+          "request": {
+            "name": "Confirm a booking",
+            "description": {
+              "content": "Confirms a booking for a rate key validated through checkrates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-api",
+                "1.0",
+                "bookings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"holder\": {\n    \"name\": \"<string>\",\n    \"surname\": \"<string>\"\n  },\n  \"rooms\": [\n    {\n      \"rateKey\": \"<string>\",\n      \"paxes\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"rateKey\": \"<string>\",\n      \"paxes\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ],\n  \"clientReference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d86b270-2a1f-4105-b6f2-b11d94a7202e",
+              "name": "The confirmed booking.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-api",
+                    "1.0",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"holder\": {\n    \"name\": \"<string>\",\n    \"surname\": \"<string>\"\n  },\n  \"rooms\": [\n    {\n      \"rateKey\": \"<string>\",\n      \"paxes\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"rateKey\": \"<string>\",\n      \"paxes\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ],\n  \"clientReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reference\": \"string\",\n  \"clientReference\": \"string\",\n  \"status\": \"string\",\n  \"totalNet\": \"string\",\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c3e3f21-eb88-4765-8fcf-4c5a099ef9dd",
+          "name": "Booking detail",
+          "request": {
+            "name": "Booking detail",
+            "description": {
+              "content": "Retrieves the full detail of a single booking by reference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-api",
+                "1.0",
+                "bookings",
+                ":bookingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bookingId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66d7debd-1dbf-46a9-93d5-f0adfe8531be",
+              "name": "The requested booking.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-api",
+                    "1.0",
+                    "bookings",
+                    ":bookingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bookingId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reference\": \"string\",\n  \"clientReference\": \"string\",\n  \"status\": \"string\",\n  \"totalNet\": \"string\",\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f87d1d67-037b-48ba-97f0-bd7aee98f362",
+          "name": "Cancel a booking",
+          "request": {
+            "name": "Cancel a booking",
+            "description": {
+              "content": "Cancels a booking, or simulates the cancellation when cancellationFlag is SIMULATION.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-api",
+                "1.0",
+                "bookings",
+                ":bookingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cancellationFlag",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bookingId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de869075-a6df-40e7-b4eb-09ada2ce0399",
+              "name": "The cancelled booking.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-api",
+                    "1.0",
+                    "bookings",
+                    ":bookingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cancellationFlag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bookingId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reference\": \"string\",\n  \"clientReference\": \"string\",\n  \"status\": \"string\",\n  \"totalNet\": \"string\",\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hotelbeds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a163d8ac-f2d5-4825-8ac4-bd5b9256fd13",
+    "name": "Hotelbeds APItude Activities Booking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.\n\nContact Support:\n Name: Hotelbeds Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

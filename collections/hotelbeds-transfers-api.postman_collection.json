@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "b88c1402-6751-4b6f-a42f-d755523b64d9",
+      "name": "Transfers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6f9cb1c-f72d-4ad6-981f-4ea66391f432",
+          "name": "Transfer availability search",
+          "request": {
+            "name": "Transfer availability search",
+            "description": {
+              "content": "Returns available transfers between an origin and destination identified by IATA code, GPS coordinates, or Hotelbeds custom codes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transfer-api",
+                "1.0",
+                "availability",
+                ":language",
+                "from",
+                ":fromType",
+                ":fromCode",
+                "to",
+                ":toType",
+                ":toCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fromType",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fromCode",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "toType",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "toCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d423613e-939a-41fc-8627-1920e32ac08d",
+              "name": "Transfer availability results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transfer-api",
+                    "1.0",
+                    "availability",
+                    ":language",
+                    "from",
+                    ":fromType",
+                    ":fromCode",
+                    "to",
+                    ":toType",
+                    ":toCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fromType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fromCode",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "toType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "toCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditData\": {},\n  \"hotels\": {\n    \"total\": 1160,\n    \"hotels\": [\n      {\n        \"code\": 459,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      },\n      {\n        \"code\": 7134,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hotelbeds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7aab47c2-d192-4951-be67-0149a9d5871f",
+    "name": "Hotelbeds APItude Activities Transfers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.\n\nContact Support:\n Name: Hotelbeds Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

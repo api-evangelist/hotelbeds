@@ -1,0 +1,377 @@
+{
+  "item": [
+    {
+      "id": "1cba385e-dcee-495f-863f-d698b7f36eee",
+      "name": "Content",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7979523a-7606-42cf-9460-46763b055ff1",
+          "name": "Hotel content",
+          "request": {
+            "name": "Hotel content",
+            "description": {
+              "content": "Returns static content for hotels - descriptions, addresses, images, and facilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-content-api",
+                "1.0",
+                "hotels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9dccf906-6022-4c01-be69-a8e03deeb6fa",
+              "name": "Hotel content results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-content-api",
+                    "1.0",
+                    "hotels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": 2568,\n  \"to\": 5692,\n  \"total\": 279,\n  \"hotels\": [\n    {\n      \"code\": 1377,\n      \"name\": \"string\",\n      \"categoryName\": \"string\",\n      \"destinationName\": \"string\",\n      \"minRate\": \"string\",\n      \"currency\": \"string\"\n    },\n    {\n      \"code\": 5470,\n      \"name\": \"string\",\n      \"categoryName\": \"string\",\n      \"destinationName\": \"string\",\n      \"minRate\": \"string\",\n      \"currency\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07a0d8a5-0630-4196-866e-855693c34e06",
+          "name": "Countries",
+          "request": {
+            "name": "Countries",
+            "description": {
+              "content": "Returns the list of countries available in the content database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-content-api",
+                "1.0",
+                "locations",
+                "countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12cc95c3-398f-412d-bcd7-23093ff27171",
+              "name": "Country list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-content-api",
+                    "1.0",
+                    "locations",
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": 3184,\n  \"to\": 9204,\n  \"total\": 5100,\n  \"hotels\": [\n    {\n      \"code\": 5346,\n      \"name\": \"string\",\n      \"categoryName\": \"string\",\n      \"destinationName\": \"string\",\n      \"minRate\": \"string\",\n      \"currency\": \"string\"\n    },\n    {\n      \"code\": 406,\n      \"name\": \"string\",\n      \"categoryName\": \"string\",\n      \"destinationName\": \"string\",\n      \"minRate\": \"string\",\n      \"currency\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03dfc8e3-d7ca-4936-8d6b-b858960079a9",
+          "name": "Destinations",
+          "request": {
+            "name": "Destinations",
+            "description": {
+              "content": "Returns the list of destinations available in the content database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hotel-content-api",
+                "1.0",
+                "locations",
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1aa92b16-6681-4ae8-a57d-daf5c36b6c0d",
+              "name": "Destination list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hotel-content-api",
+                    "1.0",
+                    "locations",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": 3184,\n  \"to\": 9204,\n  \"total\": 5100,\n  \"hotels\": [\n    {\n      \"code\": 5346,\n      \"name\": \"string\",\n      \"categoryName\": \"string\",\n      \"destinationName\": \"string\",\n      \"minRate\": \"string\",\n      \"currency\": \"string\"\n    },\n    {\n      \"code\": 406,\n      \"name\": \"string\",\n      \"categoryName\": \"string\",\n      \"destinationName\": \"string\",\n      \"minRate\": \"string\",\n      \"currency\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hotelbeds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "151a282d-c284-41b5-b492-7453d971b2d1",
+    "name": "Hotelbeds APItude Activities Content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.\n\nContact Support:\n Name: Hotelbeds Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

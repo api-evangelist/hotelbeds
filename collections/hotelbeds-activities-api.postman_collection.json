@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "9c6d2e20-269a-45d2-9437-b4f8ae2f5e49",
+      "name": "Activities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd18d963-2584-40ea-9a06-291bef3a2573",
+          "name": "Activities availability search",
+          "request": {
+            "name": "Activities availability search",
+            "description": {
+              "content": "Returns real-time availability and pricing for tours and activities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity-api",
+                "3.0",
+                "activities",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stay\": {\n    \"checkIn\": \"<date>\",\n    \"checkOut\": \"<date>\"\n  },\n  \"occupancies\": [\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    },\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    }\n  ],\n  \"destination\": {\n    \"code\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61c1cb15-eef0-4884-9124-c552fbc85a48",
+              "name": "Activity availability results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity-api",
+                    "3.0",
+                    "activities",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stay\": {\n    \"checkIn\": \"<date>\",\n    \"checkOut\": \"<date>\"\n  },\n  \"occupancies\": [\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    },\n    {\n      \"rooms\": \"<integer>\",\n      \"adults\": \"<integer>\",\n      \"children\": \"<integer>\"\n    }\n  ],\n  \"destination\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditData\": {},\n  \"hotels\": {\n    \"total\": 5643,\n    \"hotels\": [\n      {\n        \"code\": 8283,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      },\n      {\n        \"code\": 4778,\n        \"name\": \"string\",\n        \"categoryName\": \"string\",\n        \"destinationName\": \"string\",\n        \"minRate\": \"string\",\n        \"currency\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hotelbeds.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "14da4be8-03d0-489d-895a-f2ef262366c9",
+    "name": "Hotelbeds APItude Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Hotelbeds (HBX Group) APItude API suite. Covers the Hotel Booking API (availability, checkrates, bookings), the Hotel Content API (static hotel and destination data), the Activities API, the Transfers API, and the Hotel Cache API. All requests authenticate with an Api-key header plus an X-Signature header, a SHA256 hash (in hex) of the API key, shared secret, and the current Unix timestamp in seconds.\n\nContact Support:\n Name: Hotelbeds Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
