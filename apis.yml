@@ -7,6 +7,18 @@ description: Hotelbeds (now part of HBX Group) is a global B2B travel bedbank an
   price, and book hotels, activities, and transfers, and pull static content and
   cached availability, authenticated with an Api-key plus a SHA256 X-Signature of
   the API key, secret, and request timestamp.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
