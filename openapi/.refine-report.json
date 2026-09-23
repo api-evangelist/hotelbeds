@@ -1,11 +1,7 @@
 {
   "provider": "hotelbeds",
   "sources": [
-    "hotelbeds-activities-api-openapi.yml",
-    "hotelbeds-booking-api-openapi.yml",
-    "hotelbeds-cache-api-openapi.yml",
-    "hotelbeds-content-api-openapi.yml",
-    "hotelbeds-transfers-api-openapi.yml"
+    "_original/hotelbeds-openapi.yml"
   ],
   "outputs": [
     "hotelbeds-activities-api-openapi.yml",
@@ -17,6 +13,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "hotelbeds-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "hotelbeds-openapi.yml: declared missing tag: Activities",
+    "hotelbeds-openapi.yml: declared missing tag: Booking",
+    "hotelbeds-openapi.yml: declared missing tag: Cache",
+    "hotelbeds-openapi.yml: declared missing tag: Content",
+    "hotelbeds-openapi.yml: declared missing tag: Transfers",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "hotelbeds-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hotelbeds-booking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hotelbeds-cache-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hotelbeds-content-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hotelbeds-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
