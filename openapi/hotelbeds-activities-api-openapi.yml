@@ -54,6 +54,21 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Hotel'
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
     AvailabilityRequest:
       type: object
       properties:
@@ -82,21 +97,6 @@ components:
           properties:
             code:
               type: string
-    Hotel:
-      type: object
-      properties:
-        code:
-          type: integer
-        name:
-          type: string
-        categoryName:
-          type: string
-        destinationName:
-          type: string
-        minRate:
-          type: string
-        currency:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
