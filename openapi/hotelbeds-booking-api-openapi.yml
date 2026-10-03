@@ -190,6 +190,64 @@ components:
           properties:
             code:
               type: string
+    Status:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
+    AvailabilityResponse:
+      type: object
+      properties:
+        auditData:
+          type: object
+        hotels:
+          type: object
+          properties:
+            total:
+              type: integer
+            hotels:
+              type: array
+              items:
+                $ref: '#/components/schemas/Hotel'
+    CheckRateRequest:
+      type: object
+      properties:
+        rooms:
+          type: array
+          items:
+            type: object
+            properties:
+              rateKey:
+                type: string
+    Booking:
+      type: object
+      properties:
+        reference:
+          type: string
+        clientReference:
+          type: string
+        status:
+          type: string
+        totalNet:
+          type: string
+        currency:
+          type: string
     BookingRequest:
       type: object
       properties:
@@ -213,64 +271,6 @@ components:
                   type: object
         clientReference:
           type: string
-    CheckRateRequest:
-      type: object
-      properties:
-        rooms:
-          type: array
-          items:
-            type: object
-            properties:
-              rateKey:
-                type: string
-    Hotel:
-      type: object
-      properties:
-        code:
-          type: integer
-        name:
-          type: string
-        categoryName:
-          type: string
-        destinationName:
-          type: string
-        minRate:
-          type: string
-        currency:
-          type: string
-    Booking:
-      type: object
-      properties:
-        reference:
-          type: string
-        clientReference:
-          type: string
-        status:
-          type: string
-        totalNet:
-          type: string
-        currency:
-          type: string
-    AvailabilityResponse:
-      type: object
-      properties:
-        auditData:
-          type: object
-        hotels:
-          type: object
-          properties:
-            total:
-              type: integer
-            hotels:
-              type: array
-              items:
-                $ref: '#/components/schemas/Hotel'
-    Status:
-      type: object
-      properties:
-        status:
-          type: string
-          example: OK
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
