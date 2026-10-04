@@ -162,6 +162,60 @@ paths:
                 $ref: '#/components/schemas/Booking'
 components:
   schemas:
+    BookingRequest:
+      type: object
+      properties:
+        holder:
+          type: object
+          properties:
+            name:
+              type: string
+            surname:
+              type: string
+        rooms:
+          type: array
+          items:
+            type: object
+            properties:
+              rateKey:
+                type: string
+              paxes:
+                type: array
+                items:
+                  type: object
+        clientReference:
+          type: string
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
+    CheckRateRequest:
+      type: object
+      properties:
+        rooms:
+          type: array
+          items:
+            type: object
+            properties:
+              rateKey:
+                type: string
+    Status:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
     AvailabilityRequest:
       type: object
       properties:
@@ -190,24 +244,16 @@ components:
           properties:
             code:
               type: string
-    Status:
+    Booking:
       type: object
       properties:
+        reference:
+          type: string
+        clientReference:
+          type: string
         status:
           type: string
-          example: OK
-    Hotel:
-      type: object
-      properties:
-        code:
-          type: integer
-        name:
-          type: string
-        categoryName:
-          type: string
-        destinationName:
-          type: string
-        minRate:
+        totalNet:
           type: string
         currency:
           type: string
@@ -225,52 +271,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Hotel'
-    CheckRateRequest:
-      type: object
-      properties:
-        rooms:
-          type: array
-          items:
-            type: object
-            properties:
-              rateKey:
-                type: string
-    Booking:
-      type: object
-      properties:
-        reference:
-          type: string
-        clientReference:
-          type: string
-        status:
-          type: string
-        totalNet:
-          type: string
-        currency:
-          type: string
-    BookingRequest:
-      type: object
-      properties:
-        holder:
-          type: object
-          properties:
-            name:
-              type: string
-            surname:
-              type: string
-        rooms:
-          type: array
-          items:
-            type: object
-            properties:
-              rateKey:
-                type: string
-              paxes:
-                type: array
-                items:
-                  type: object
-        clientReference:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

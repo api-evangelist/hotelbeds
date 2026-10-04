@@ -40,21 +40,6 @@ paths:
                 $ref: '#/components/schemas/AvailabilityResponse'
 components:
   schemas:
-    Hotel:
-      type: object
-      properties:
-        code:
-          type: integer
-        name:
-          type: string
-        categoryName:
-          type: string
-        destinationName:
-          type: string
-        minRate:
-          type: string
-        currency:
-          type: string
     AvailabilityRequest:
       type: object
       properties:
@@ -83,6 +68,21 @@ components:
           properties:
             code:
               type: string
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
     AvailabilityResponse:
       type: object
       properties:
