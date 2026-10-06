@@ -41,7 +41,7 @@ tags:
 - Accommodation
 - Booking
 created: '2026-06-25'
-modified: '2026-06-25'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: hotelbeds:hotelbeds-activities-api
@@ -205,6 +205,8 @@ apis:
   - type: APIReference
     url: https://developer.hotelbeds.com/documentation/transfers/transfer-api/
 common:
+- url: https://discover.hotelbeds.com/products-and-services/services-for-distributors/insights
+  type: Blog
 - type: AgenticAccess
   url: agentic-access/hotelbeds-agentic-access.yml
 - type: DomainSecurity
