@@ -40,6 +40,35 @@ paths:
                 $ref: '#/components/schemas/AvailabilityResponse'
 components:
   schemas:
+    AvailabilityResponse:
+      type: object
+      properties:
+        auditData:
+          type: object
+        hotels:
+          type: object
+          properties:
+            total:
+              type: integer
+            hotels:
+              type: array
+              items:
+                $ref: '#/components/schemas/Hotel'
+    Hotel:
+      type: object
+      properties:
+        code:
+          type: integer
+        name:
+          type: string
+        categoryName:
+          type: string
+        destinationName:
+          type: string
+        minRate:
+          type: string
+        currency:
+          type: string
     AvailabilityRequest:
       type: object
       properties:
@@ -68,35 +97,6 @@ components:
           properties:
             code:
               type: string
-    Hotel:
-      type: object
-      properties:
-        code:
-          type: integer
-        name:
-          type: string
-        categoryName:
-          type: string
-        destinationName:
-          type: string
-        minRate:
-          type: string
-        currency:
-          type: string
-    AvailabilityResponse:
-      type: object
-      properties:
-        auditData:
-          type: object
-        hotels:
-          type: object
-          properties:
-            total:
-              type: integer
-            hotels:
-              type: array
-              items:
-                $ref: '#/components/schemas/Hotel'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
