@@ -1,4 +1,4 @@
-# Hotelbeds (hotelbeds)
+# Hotelbeds
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,156 +66,123 @@
 
 Hotelbeds (now part of HBX Group) is a global B2B travel bedbank and accommodation wholesaler. Its APItude suite of REST APIs lets travel sellers search, price, and book hotels, activities, and transfers, and pull static content and cached availability, authenticated with an Api-key plus a SHA256 X-Signature of the API key, secret, and request timestamp.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/hotelbeds/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/hotelbeds/refs/heads/main/apis.yml)
+**Areas:** Travel · Hotels · Bedbank · Accommodation · Booking
 
-## Tags
+## Hotelbeds on APIs.io
 
-- Travel
-- Hotels
-- Bedbank
-- Accommodation
-- Booking
+Everything profiled for Hotelbeds is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hotelbeds/](https://apis.io/providers/hotelbeds/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (5)
 
-- **Created:** 2026-06-25
-- **Modified:** 2026-06-25
+- [Hotelbeds Activities API](https://apis.io/apis/hotelbeds/hotelbeds-activities-api/) — The Activities API from Hotelbeds — 1 operation(s) for activities.
+- [Hotelbeds Booking API](https://apis.io/apis/hotelbeds/hotelbeds-booking-api/) — The Booking API from Hotelbeds — 5 operation(s) for booking.
+- [Hotelbeds Cache API](https://apis.io/apis/hotelbeds/hotelbeds-cache-api/) — The Cache API from Hotelbeds — 1 operation(s) for cache.
+- [Hotelbeds Content API](https://apis.io/apis/hotelbeds/hotelbeds-content-api/) — The Content API from Hotelbeds — 3 operation(s) for content.
+- [Hotelbeds Transfers API](https://apis.io/apis/hotelbeds/hotelbeds-transfers-api/) — The Transfers API from Hotelbeds — 1 operation(s) for transfers.
 
-## APIs
+### Published properties
 
-### Hotel Booking API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Hotel availability search, real-time rate checking (checkrates), and the full booking lifecycle - confirm, list, detail, modify, and cancel reservations - across the Hotelbeds accommodation bedbank.
+#### Agentic access (1)
 
-- **Human URL:** [https://developer.hotelbeds.com/documentation/hotels/booking-api/](https://developer.hotelbeds.com/documentation/hotels/booking-api/)
-- **Base URL:** `https://api.hotelbeds.com/hotel-api/1.0`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Hotelbeds Agentic Access](https://apis.io/agentic-access/hotelbeds/hotelbeds-agentic-access/)
 
-- Hotels
-- Booking
-- Availability
-- Rates
+#### Collections (6)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developer.hotelbeds.com/documentation/hotels/booking-api/)
-- [API Reference](https://developer.hotelbeds.com/documentation/hotels/booking-api/workflow/)
-- [OpenAPI](openapi/hotelbeds-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hotelbeds.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hotelbeds.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Hotelbeds APItude API](https://apis.io/collections/hotelbeds/open-hotelbeds/)
+- [Hotelbeds APItude Activities API](https://apis.io/collections/hotelbeds/open-hotelbeds-activities-api/)
+- [Hotelbeds APItude Activities Booking API](https://apis.io/collections/hotelbeds/open-hotelbeds-booking-api/)
+- [Hotelbeds APItude Activities Cache API](https://apis.io/collections/hotelbeds/open-hotelbeds-cache-api/)
+- [Hotelbeds APItude Activities Content API](https://apis.io/collections/hotelbeds/open-hotelbeds-content-api/)
+- [Hotelbeds APItude Activities Transfers API](https://apis.io/collections/hotelbeds/open-hotelbeds-transfers-api/)
 
-### Hotel Content API
+#### Security (2)
 
-All static information needed to operate the Booking API - hotels, countries, destinations, accommodations, boards, categories, chains, facilities, segments, and currencies - served over fast REST GET endpoints.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developer.hotelbeds.com/documentation/hotels/content-api/](https://developer.hotelbeds.com/documentation/hotels/content-api/)
-- **Base URL:** `https://api.hotelbeds.com/hotel-content-api/1.0`
+- [Hotelbeds Authentication](https://apis.io/security/hotelbeds/hotelbeds-authentication/)
+- [Hotelbeds Domain Security](https://apis.io/security/hotelbeds/hotelbeds-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Hotels
-- Content
-- Static Data
+Published plans, tiers and prices.
 
-#### Properties
+- [Hotelbeds Plans Pricing](https://apis.io/plans/hotelbeds/hotelbeds-plans-pricing/)
 
-- [Documentation](https://developer.hotelbeds.com/documentation/hotels/content-api/)
-- [API Reference](https://developer.hotelbeds.com/documentation/hotels/content-api/how-use-content-api/)
-- [OpenAPI](openapi/hotelbeds-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hotelbeds.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hotelbeds.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Cache Rates API
+Published request limits.
 
-Bulk cached price and availability snapshots for high-volume search, letting integrators index inventory locally and reduce live availability calls before rechecking up-to-date rates through the Booking API.
+- [Hotelbeds Rate Limits](https://apis.io/rate-limits/hotelbeds/hotelbeds-rate-limits/)
 
-- **Human URL:** [https://developer.hotelbeds.com/documentation/hotels/cache-api/](https://developer.hotelbeds.com/documentation/hotels/cache-api/)
-- **Base URL:** `https://api.hotelbeds.com/cache-api/1.0`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Hotels
-- Cache
-- Rates
+- [Hotelbeds Finops](https://apis.io/finops/hotelbeds/hotelbeds-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://developer.hotelbeds.com/documentation/hotels/cache-api/)
-- [OpenAPI](openapi/hotelbeds-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hotelbeds.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hotelbeds.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Activities API
-
-Real-time availability, rate checking, and booking management for tours and activities, plus activity content and portfolio data such as countries and destinations.
-
-- **Human URL:** [https://developer.hotelbeds.com/documentation/activities/](https://developer.hotelbeds.com/documentation/activities/)
-- **Base URL:** `https://api.hotelbeds.com/activity-api/3.0`
-
-#### Tags
-
-- Activities
-- Tours
-- Booking
-
-#### Properties
-
-- [Documentation](https://developer.hotelbeds.com/documentation/activities/)
-- [API Reference](https://developer.hotelbeds.com/documentation/activities/booking-api/overview/)
-- [OpenAPI](openapi/hotelbeds-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hotelbeds.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hotelbeds.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Transfers API
-
-Ground transportation availability and booking by IATA code, GPS coordinates, or Hotelbeds custom codes, covering airport, hotel, and point-to-point transfers, plus transfer content such as routes and vehicle types.
-
-- **Human URL:** [https://developer.hotelbeds.com/documentation/transfers/](https://developer.hotelbeds.com/documentation/transfers/)
-- **Base URL:** `https://api.hotelbeds.com/transfer-api/1.0`
-
-#### Tags
-
-- Transfers
-- Ground Transport
-- Booking
-
-#### Properties
-
-- [Documentation](https://developer.hotelbeds.com/documentation/transfers/)
-- [API Reference](https://developer.hotelbeds.com/documentation/transfers/transfer-api/)
-- [OpenAPI](openapi/hotelbeds-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hotelbeds.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hotelbeds.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Webhooks
-
-Outbound booking event notifications - confirmations, modifications, and cancellations - pushed to integrator endpoints so partner systems stay in sync without polling. Availability varies by partner agreement.
-
-- **Human URL:** [https://developer.hotelbeds.com/documentation/hotels/booking-api/](https://developer.hotelbeds.com/documentation/hotels/booking-api/)
-- **Base URL:** `https://api.hotelbeds.com/hotel-api/1.0`
-
-#### Tags
-
-- Webhooks
-- Events
-- Notifications
-
-#### Properties
-
-- [Documentation](https://developer.hotelbeds.com/documentation/hotels/booking-api/)
-- [OpenAPI](openapi/hotelbeds-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/hbxgroup)
 - [Website](https://www.hotelbeds.com)
 - [Documentation](https://developer.hotelbeds.com/documentation/)
-- [Plans](plans/hotelbeds-plans-pricing.yml)
-- [Rate Limits](rate-limits/hotelbeds-rate-limits.yml)
-- [Fin Ops](finops/hotelbeds-finops.yml)
+- [Blog](https://discover.hotelbeds.com/products-and-services/services-for-distributors/insights)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.9** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 48.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 5.3 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hotelbeds/](https://apis.io/providers/hotelbeds/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Hotelbeds: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hotelbeds/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
